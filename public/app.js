@@ -67,7 +67,7 @@ $(document).ready(function() {
             .value;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/vote",
+            url: "/vote",
             data: {
                 postID: postID,
                 voteType: "up"
@@ -81,7 +81,7 @@ $(document).ready(function() {
             .value;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/vote",
+            url: "/vote",
             data: {
                 postID: postID,
                 voteType: "down"
@@ -132,7 +132,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/search",
+            url: "/search",
             data: {
                 searchText: searchText
             },
