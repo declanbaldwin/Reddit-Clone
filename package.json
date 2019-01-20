@@ -1,0 +1,41 @@
+{
+  "name": "bitcoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "8.11.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "SET \"NODE_ENV=test\" && mocha --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/declanbaldwin/Bitcoin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/declanbaldwin/Bitcoin/issues"
+  },
+  "homepage": "https://github.com/declanbaldwin/Bitcoin#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "crypto-js": "^3.1.9-1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.6",
+    "validator": "^10.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.5"
+  }
+}

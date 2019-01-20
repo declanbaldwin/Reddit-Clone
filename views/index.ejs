@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+            integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+            crossorigin="anonymous"
+        />
+        <title>Bitcoin</title>
+    </head>
+
+    <body>
+        <nav>
+            <div class="logo">
+                <a href="/">
+                    <img
+                      alt="Bitcoin logo"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Bitcoin_logo.svg/256px-Bitcoin_logo.svg.png"
+                    />
+                </a>
+            </div>
+            <div class="centre">
+                <div class="search">
+                    <input type="text" name="search" id="searchInput" placeholder="Search..." />
+                </div>
+            </div>
+            <% if(token) { %>
+            <div class="dropdown">
+                <button class="myAccountButton" type="button">
+                    <span><%= user.firstName %> <%= user.lastName %></span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/account">My Account</a> 
+                    <a href="/myposts">My Posts</a>
+                    <a href="/logout">Log Out</a>
+                </div>
+            </div>
+            <% } else { %>
+            <div class="signIn">
+                <a href="/login">
+                    <button class="signInButton" type="button">
+                        <span>Sign In</span>
+                    </button>
+                </a>
+            </div>
+            <% } %>
+        </nav>
+        <main>
+            <aside>
+                <div class="fixedMenu">
+                    <div class="title"><span>Bitcoin</span></div>
+                    <div class="topics">
+                        <div id="factsTab">Facts</div>
+                        <div id="opinionsTab">Opinions</div>
+                        <div id="experiencesTab">Experiences</div>
+                    </div>
+                </div>
+            </aside>
+            <section class="postsSection">
+                <div class="postsSectionHeader">
+                    <div class="New Post">
+                        <button class="newPostButton" type="button">
+                            <span>New Post</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="factsPostsContainer">
+                    <div class="postsHeader">Facts</div>
+                    <% posts.forEach( function( posts ){ if(posts.postType !==
+                    "fact") return; %>
+                    <div class="posts">
+                        <div class="postsBody" id="<%= posts._id %>">
+                            <p><%= posts.title %></p>
+                            <p><%= posts.body %></p>
+                            <div class="postsInfo">
+                                <span>
+                                    <%= posts.author %> - <%=
+                                    posts.createdAt.toLocaleDateString("en-US")
+                                    %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="postsScore">
+                        <% if(!token) { %>
+                            <div class="upArrow">
+                        <% } else if(posts.upvoters.includes(user._id.toHexString())) { %>
+                            <div class="upArrow red">
+                        <% } else { %>
+                            <div class="upArrow">
+                        <% } %>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 12 12"
+                                >
+                                    <g><path d="M1 8h10L6 3 1 8" /></g>
+                                </svg>
+                            </div>
+                            <p><%= posts.score %></p>
+                            <% if(!token) { %>
+                                <div class="downArrow">
+                            <% } else if(posts.downvoters.includes(user._id.toHexString())) { %>
+                                <div class="downArrow red">
+                            <% } else { %>
+                                <div class="downArrow">
+                            <% } %>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 12 12"
+                                >
+                                    <g><path d="M1 4h10L6 9 1 4" /></g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+
+                <div class="opinionsPostsContainer">
+                    <div class="postsHeader">Opinions</div>
+                    <% posts.forEach( function( posts ){ if(posts.postType !==
+                    "opinion") return; %>
+                    <div class="posts">
+                        <div class="postsBody" id="<%= posts._id %>">
+                            <p><%= posts.title %></p>
+                            <p><%= posts.body %></p>
+                            <div class="postsInfo">
+                                <span>
+                                    <%= posts.author %> - <%=
+                                    posts.createdAt.toLocaleDateString("en-US")
+                                    %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="postsScore">
+                            <% if(!token) { %>
+                                <div class="upArrow">
+                            <% } else if(posts.upvoters.includes(user._id.toHexString())) { %>
+                                <div class="upArrow red">
+                            <% } else { %>
+                                <div class="upArrow">
+                            <% } %>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 12 12"
+                                    >
+                                        <g><path d="M1 8h10L6 3 1 8" /></g>
+                                    </svg>
+                                </div>
+                                <p><%= posts.score %></p>
+                                <% if(!token) { %>
+                                    <div class="downArrow">
+                                <% } else if(posts.downvoters.includes(user._id.toHexString())) { %>
+                                    <div class="downArrow red">
+                                <% } else { %>
+                                    <div class="downArrow">
+                                <% } %>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 12 12"
+                                    >
+                                    <g><path d="M1 4h10L6 9 1 4" /></g>
+                                    </svg>
+                                </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+
+                <div class="experiencesPostsContainer">
+                    <div class="postsHeader">Experiences</div>
+                    <% posts.forEach( function( posts ){ if(posts.postType !==
+                    "experience") return; %>
+                    <div class="posts">
+                        <div class="postsBody" id="<%= posts._id %>">
+                            <p><%= posts.title %></p>
+                            <p><%= posts.body %></p>
+                            <div class="postsInfo">
+                                <span>
+                                    <%= posts.author %> - <%=
+                                    posts.createdAt.toLocaleDateString("en-US")
+                                    %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="postsScore">
+                        <% if(!token) { %>
+                            <div class="upArrow">
+                        <% } else if(posts.upvoters.includes(user._id.toHexString())) { %>
+                            <div class="upArrow red">
+                        <% } else { %>
+                            <div class="upArrow">
+                        <% } %>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 12 12"
+                                >
+                                    <g><path d="M1 8h10L6 3 1 8" /></g>
+                                </svg>
+                            </div>
+                            <p><%= posts.score %></p>
+                            <% if(!token) { %>
+                                <div class="downArrow">
+                            <% } else if(posts.downvoters.includes(user._id.toHexString())) { %>
+                                <div class="downArrow red">
+                            <% } else { %>
+                                <div class="downArrow">
+                            <% } %>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 12 12"
+                                >
+                                    <g><path d="M1 4h10L6 9 1 4" /></g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+                <div class="searchPostsContainer">
+                    <div class="postsHeader">Search Results</div>
+                </div>
+                <div class="newPostContainer">
+                    <% if(token) { %>
+                    <div class="postsHeader">New Post</div>
+                    <form class="newPostForm" action="/posts" method="POST">
+                        <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            placeholder="Title"
+                            required
+                        />
+                        <select
+                            name="postType"
+                            id="postTypeDropdown"
+                            placeholder="Please select a type."
+                            required
+                        >
+                            <option value="">Please choose an type</option>
+                            <option value="fact">Fact</option>
+                            <option value="opinion">Opinion</option>
+                            <option value="experience">Experience</option>
+                        </select>
+                        <input
+                            type="text"
+                            name="text"
+                            id="text"
+                            placeholder="Text"
+                            maxlength="300"
+                            required
+                        />
+                        <button class="newPostButton">Post</button>
+                    </form>
+                    <% } else { %>
+                    <div class="postsHeader">To Post Something, Please Log In.</div>
+                    <% }; %>
+                </div>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>
+<script src="app.js"></script>

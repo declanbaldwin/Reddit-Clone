@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <title>Login</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="/">
+          <img
+            alt="Bitcoin logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Bitcoin_logo.svg/256px-Bitcoin_logo.svg.png"
+          />
+        </a>
+      </div>
+      <div class="centre">
+      </div>
+      <div class="signInAndUpButtons">
+        <button class="signUpButton" type="button"><span>Sign Up</span></button>
+        <button class="signInButton" type="button"><span>Sign In</span></button>
+      </div>
+    </nav>
+    <main>
+      <section id="loginSection">
+        <div class="loginBody">
+          <div class="postsHeader">Log in</div>
+          <form class="loginForm" action="/users/login" method="post">
+            <input type="text" name="email" id="email" placeholder="Email" required/>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <button class="loginButton">Log In</button>
+            <a class="forgottenPasswordButton" href="#">Forgotton your password?</a>
+          </form>
+        </div>
+      </section>
+      <section id="signUpSection">
+        <div class="loginBody">
+          <div class="postsHeader">Sign Up</div>
+          <form class="signUpForm" action="/users" method="post">
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="Last Name"
+              required
+            />
+            <input type="text" name="email" id="email" placeholder="Email" required/>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              minlength="6"
+              required
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Please Re-Enter Password"
+              minlength="6"
+              required
+            />
+            <button class="loginButton">Sign Up</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<script src="app.js"></script>

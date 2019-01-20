@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <title>My Posts</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="/">
+          <img
+            alt="Bitcoin logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Bitcoin_logo.svg/256px-Bitcoin_logo.svg.png"
+          />
+        </a>
+      </div>
+      <div class="centre">
+      </div>
+      <div class="dropdown">
+        <button class="myAccountButton" type="button">
+          <span><%= user.firstName %> <%= user.lastName %></span>
+        </button>
+        <div class="dropdown-content">
+          <a href="/account">My Account</a> <a href="/myposts">My Posts</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section id="loginSection">
+        <div class="loginBody">
+          <div class="postsHeader">My Posts</div>
+            <% posts.forEach( function( posts ){ %>
+            <div class="posts">
+              <div class="postsBody">
+                <p><%= posts.title %></p>
+                <p><%= posts.body %></p>
+                <div class="postsInfo">
+                  <span>
+                    <%= posts.author %> - <%=
+                    posts.createdAt.toLocaleDateString("en-US") %>
+                  </span>
+                </div>
+              </div>
+              <div class="myPostsScore">
+                <p><%= posts.score %></p>
+              </div>
+              <div class="deletePost">
+                  <form action='/deletePost/<%= posts._id %>' method="delete">
+                      <button type="submit"><img src="https://www.svgrepo.com/show/21045/delete-button.svg" alt="" srcset=""></button>
+                  </form>
+              </div>
+            </div>
+            <% }); %>
+      </section>
+    </main>
+  </body>
+</html>
+
+<script src="app.js"></script>

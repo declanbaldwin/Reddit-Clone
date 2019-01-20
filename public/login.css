@@ -1,0 +1,66 @@
+.signInAndUpButtons .signInButton {
+    display: none;
+}
+
+#loginSection, #signUpSection {
+    background-color: #ffffff;
+    width: 50%;
+    box-shadow: 0 0 5px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+#signUpSection {
+    display: none;
+}
+
+.loginForm, .signUpForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    color: #444444;
+}
+
+.loginForm input, .loginForm select, .signUpForm input, .signUpForm select {
+    font-size: 1rem;
+    border: 1px solid #afafaf;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 1rem;
+    width: 75%;
+}
+
+.loginForm input:focus, .loginForm select:focus, .signUpForm input:focus, .signUpForm select:focus {
+    border: 1px solid rgb(28, 28, 28);
+}
+
+.loginForm #text, .signUpForm #text {
+    min-height: 4rem;
+}
+
+.loginForm .loginButton, .signUpForm .loginButton {
+    max-width: 100px;
+    margin: 0;
+    background-color: #f5a623;
+    border: 1px solid #f5a623;
+    padding: 10px 10px;
+    height: 38px;
+    font-size: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.loginForm .loginButton:hover, .signUpForm .loginButton:hover {
+    background-color: #da9118;
+    border: 1px solid #da9118;
+}
+
+.loginForm a {
+    text-decoration: none;
+}
+
+.loginForm a:hover {
+    text-decoration: underline;
+}
